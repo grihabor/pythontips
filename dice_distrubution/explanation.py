@@ -1,3 +1,8 @@
+"""
+Вычисление вероятностей выпадания каждой суммы
+чисел на гранях игрального кубика при трехкратном 
+броске
+"""
 from itertools import product
 from pprint import pprint
 from decimal import Decimal
@@ -26,12 +31,13 @@ c = Counter(sum_outcomes)
 outcome_count = sum(c.values())
 
 # Посчитаем распределение нашей дискретной случайной
-# величины, т.е. вероятность выпадания каждой тройки
+# величины, т.е. вероятность выпадания троек с нужной
+# суммой
 distribution = {
     key: value / outcome_count 
     for key, value in c.items()
 }
-# По сути, посчитаем долю появлений каждой тройки
+# По сути, посчитаем долю появлений каждой суммы
 # от общего числа появлений
 
 pprint(distribution)
