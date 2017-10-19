@@ -5,7 +5,6 @@
 """
 from itertools import product
 from pprint import pprint
-from decimal import Decimal
 from collections import Counter
 
 

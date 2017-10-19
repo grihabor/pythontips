@@ -3,15 +3,14 @@ from pprint import pprint
 from collections import Counter
 
 
-options = range(1, 7)
-outcomes = product(options,  repeat=3)
-sum_outcomes = (sum(outcome) for outcome in outcomes)
-c = Counter(sum_outcomes)
-outcome_count = sum(c.values())
-distribution = {
-    key: value / outcome_count 
+distribution = (lambda c: {
+    key: value / sum(c.values()) 
     for key, value in c.items()
-}
+})(Counter(
+    sum(outcome) for outcome 
+    in product(range(1, 7),  repeat=3)
+))
+
 pprint(distribution)
 #>{3: 0.004629629629629629,
 #> 4: 0.013888888888888888,
@@ -29,4 +28,3 @@ pprint(distribution)
 #> 16: 0.027777777777777776,
 #> 17: 0.013888888888888888,
 #> 18: 0.004629629629629629}
-
